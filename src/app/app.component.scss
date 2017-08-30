@@ -1,0 +1,21 @@
+table {
+border-collapse: collapse;
+	tbody {
+		tr:nth-child(odd) {
+		background: #ccc;
+		}
+	}
+}
+
+#octocat {
+	max-width: 355px;
+}
+
+.owner {
+margin: 0;
+text-align: center;
+align-items: center;
+	img {
+	    border-radius: 50%;
+	} 
+}
