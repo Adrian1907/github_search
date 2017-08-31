@@ -3,39 +3,57 @@
 </h1>
 <form>
 	<md-form-field>
-		<input type="search" mdInput placeholder="Your request" #rep>
+		<input type="search" mdInput placeholder="Your request" #keyword>
 	</md-form-field>
-	<button type="button" md-raised-button color="primary" (click)="search(rep.value)">Search repositories</button>
+	<button type="button" md-raised-button color="primary" (click)="search(keyword.value)">Search repositories</button>
 </form>
-<table *ngIf="results;else octocat">
-	<thead>
-		<tr>
-			<th>Name</th>
-			<th>Description</th>
-			<th>Repository URL</th>
-			<th>Author</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr *ngFor="let result of results">
-			<td>{{ result.name }}</td>
-			<td>{{ result.description }}</td>
-			<td><a href="{{ result.html_url }}" target="_blank">{{ result.html_url }}</a></td>
-			<td>
-				<md-card>
-					<md-card-title-group class="owner">
-						<md-card-title>
-							<a href="{{ result.owner.html_url }}" target="_blank">
-								{{ result.owner.login }}
-							</a>
-						</md-card-title>
-						<img md-card-sm-image src="{{ result.owner.avatar_url }}" alt="avatar">
-					</md-card-title-group>
-				</md-card>
-			</td>
-		</tr>
-	</tbody>
-</table>
+
+<section *ngIf="results; else octocat">
+	<table *ngIf="results.length">
+		<colgroup>
+			<col class="name">
+			<col class="desc">
+			<col class="link">
+			<col class="author">
+		</colgroup>
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Description</th>
+				<th>Repository URL</th>
+				<th>Author</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let result of results">
+				<td>{{ result.name }}</td>
+				<td [innerHtml]="result.description ? result.description : '<em>No description :(</em>'"></td>
+				<td>
+					<a href="{{ result.html_url }}" target="_blank">
+						<md-icon>link</md-icon>
+					</a>
+				</td>
+				<td>
+					<md-card>
+						<md-card-title-group class="owner">
+							<md-card-title>
+								<a href="{{ result.owner.html_url }}" target="_blank">
+									{{ result.owner.login }}
+								</a>
+							</md-card-title>
+							<img md-card-sm-image src="{{ result.owner.avatar_url }}" alt="avatar">
+						</md-card-title-group>
+					</md-card>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<p [hidden]="!error">{{ error }}</p>
+	<md-progress-bar mode="indeterminate" *ngIf="!error" [style.display]="(!results.length) ? 'block' : 'none'"></md-progress-bar>
+
+</section>
+
 <ng-template #octocat>
-	<img id="octocat" src="octocat.gif" alt="Loading...">
+	<img id="octocat" src="octocat.gif" alt="">
 </ng-template>

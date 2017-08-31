@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MyserviceService } from './myservice.service';
+import { GithubApiService } from './githubapi.service';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +11,17 @@ export class AppComponent {
 
   title = 'Enter a keyword and search a github repository';
   results: Array<Object>;
+  error: any;
 
-  constructor(private _myserviceService: MyserviceService) { }
+  constructor(private _githubApiService: GithubApiService) { }
 
   search(keyword: string) {
-    this._myserviceService.searchRep(keyword).subscribe(
-    	(data) => this.results = data.items
+  	this.results = [];
+  	this.error = false;
+
+    this._githubApiService.searchRep(keyword).subscribe(
+    	(data) => this.results = data.items,
+    	(err) => this.error = err
     );
   }
 }

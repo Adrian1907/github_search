@@ -1,16 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http'
+import { Http } from '@angular/http'
 // import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-// import { Observable } from 'rxjs/Observable';
-// import { AppComponent } from './app.component';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
-// import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
 // import 'rxjs/add/operator/toPromise';
-// import 'rxjs/add/observable/throw';
 
 @Injectable()
-export class MyserviceService {
+export class GithubApiService {
 
    	constructor (private _http: Http) {}
 
@@ -18,9 +17,11 @@ export class MyserviceService {
 
     searchRep(keyword: string) {
         return this._http.get(this.apiUrl + keyword)
-		       .map(
-		       		(response: Response) => response.json()
-		       );
-		       // ).do(res => console.log(res.items[1].description));
+	    	.map( res => res.json())
+	    	.catch((e) => {
+		        return Observable.throw(
+		        	new Error(`${ e.status } ${ e.statusText }`)
+		        );
+	      	});
     }
 }
