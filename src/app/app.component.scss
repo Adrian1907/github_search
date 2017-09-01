@@ -1,3 +1,7 @@
+[type="submit"] {
+	margin-left: 20px;
+}
+
 table {
 border-collapse: collapse;
 width: 100%;
@@ -36,9 +40,14 @@ align-items: center;
 }
 
 #octocat {
-	max-width: 355px;
+	max-width: 360px;
 }
 
 .mat-progress-bar {
-    margin: 1em 0;
+    margin: 1em auto;
+    width: 68%;
+}
+
+ul {
+	padding: 0;
 }

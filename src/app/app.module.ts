@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { GithubApiService } from './githubapi.service';
 import { LazyLoadModule } from '@greg-md/ng-lazy-load';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
 
@@ -19,7 +20,8 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-    LazyLoadModule
+    LazyLoadModule,
+    NgxPaginationModule
   ],
   providers: [GithubApiService],
   bootstrap: [AppComponent]

@@ -12,6 +12,7 @@ export class AppComponent {
   title = 'Enter a keyword and search a github repository';
   results: Array<Object>;
   error: any;
+  p: number = 1;
 
   constructor(private _githubApiService: GithubApiService) { }
 
