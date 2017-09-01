@@ -17,7 +17,7 @@ export class AppComponent {
 
   search(keyword: string) {
   	this.results = [];
-  	this.error = false;
+  	this.error != this.error;
 
     this._githubApiService.searchRep(keyword).subscribe(
     	(data) => this.results = data.items,

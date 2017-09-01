@@ -5,18 +5,20 @@
 	<md-form-field>
 		<input type="search" mdInput placeholder="Your request" #keyword>
 	</md-form-field>
-	<button type="button" md-raised-button color="primary" (click)="search(keyword.value)">Search repositories</button>
+	<button type="submit" md-raised-button color="primary" (click)="search(keyword.value)">Search repositories</button>
 </form>
 
-<section *ngIf="results; else octocat">
-	<table *ngIf="results.length">
+<img *ngIf="!results" id="octocat" src="octocat.gif" alt="">
+
+<section *ngIf="results">
+	<table>
 		<colgroup>
 			<col class="name">
 			<col class="desc">
 			<col class="link">
 			<col class="author">
 		</colgroup>
-		<thead>
+		<thead *ngIf="results.length">
 			<tr>
 				<th>Name</th>
 				<th>Description</th>
@@ -41,7 +43,7 @@
 									{{ result.owner.login }}
 								</a>
 							</md-card-title>
-							<img md-card-sm-image src="{{ result.owner.avatar_url }}" alt="avatar">
+							<img md-card-sm-image src="md-progress-spinner.gif" gg-lazy-load="{{ result.owner.avatar_url }}" alt="avatar">
 						</md-card-title-group>
 					</md-card>
 				</td>
@@ -50,10 +52,6 @@
 	</table>
 	
 	<p [hidden]="!error">{{ error }}</p>
-	<md-progress-bar mode="indeterminate" *ngIf="!error" [style.display]="(!results.length) ? 'block' : 'none'"></md-progress-bar>
+	<md-progress-bar mode="indeterminate" [style.display]="(results.length || error) ? 'none' : 'block'"></md-progress-bar>
 
 </section>
-
-<ng-template #octocat>
-	<img id="octocat" src="octocat.gif" alt="">
-</ng-template>

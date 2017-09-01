@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { GithubApiService } from './githubapi.service';
+import { LazyLoadModule } from '@greg-md/ng-lazy-load';
 
 import { AppComponent } from './app.component';
 
@@ -17,7 +18,8 @@ import { AppComponent } from './app.component';
     MaterialModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    LazyLoadModule
   ],
   providers: [GithubApiService],
   bootstrap: [AppComponent]

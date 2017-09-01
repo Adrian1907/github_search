@@ -1,5 +1,6 @@
 table {
 border-collapse: collapse;
+width: 100%;
 	tbody {
 	text-align: center;
 		tr {
@@ -23,15 +24,21 @@ border-collapse: collapse;
 	width: 35%;
 }
 
-#octocat {
-	max-width: 355px;
-}
-
 .owner {
 margin: 0;
 text-align: center;
 align-items: center;
 	img {
+		width: 60px;
+    	height: 60px;
 	    border-radius: 50%;
 	} 
+}
+
+#octocat {
+	max-width: 355px;
+}
+
+.mat-progress-bar {
+    margin: 1em 0;
 }
