@@ -1,5 +1,4 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { MaterialModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -7,6 +6,8 @@ import { HttpModule } from '@angular/http';
 import { GithubApiService } from './githubapi.service';
 import { LazyLoadModule } from '@greg-md/ng-lazy-load';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { MaterialModule } from '@angular/material';
+import { MdSnackBarModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 
@@ -17,6 +18,7 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     MaterialModule,
+    MdSnackBarModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,

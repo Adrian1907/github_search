@@ -12,13 +12,13 @@ export class AppComponent {
   title = 'Enter a keyword and search a github repository';
   results: Array<Object>;
   error: any;
-  p: number = 1;
+  page: number = 1;
 
   constructor(private _githubApiService: GithubApiService) { }
 
   search(keyword: string) {
   	this.results = [];
-  	this.error != this.error;
+  	this.error = '';
 
     this._githubApiService.searchRep(keyword).subscribe(
     	(data) => this.results = data.items,

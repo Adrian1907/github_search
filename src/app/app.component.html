@@ -27,7 +27,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr *ngFor="let result of results | paginate: { itemsPerPage: 5, currentPage: p }">
+			<tr *ngFor="let result of results | paginate: { itemsPerPage: 5, currentPage: page }">
 				<td>{{ result.name }}</td>
 				<td [innerHtml]="result.description ? result.description : '<em>No description :(</em>'"></td>
 				<td>
@@ -50,9 +50,15 @@
 			</tr>
 		</tbody>
 	</table>
-	<pagination-controls [hidden]="results.length < 5" (pageChange)="p = $event"></pagination-controls>
 	
-	<p [hidden]="!error">{{ error }}</p>
+	<!-- <p [hidden]="!error">{{ error }}</p> -->
+
 	<md-progress-bar mode="indeterminate" [style.display]="(results.length || error) ? 'none' : 'block'"></md-progress-bar>
+
+	<section [hidden]="results.length < 5">
+		<md-toolbar>
+			<pagination-controls (pageChange)="page = $event"></pagination-controls>
+		</md-toolbar>
+	</section>
 
 </section>

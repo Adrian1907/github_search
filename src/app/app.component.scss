@@ -11,21 +11,28 @@ width: 100%;
 			&:nth-child(odd) {
 			background: #ececec;
 			}
-			td:nth-child(2) {
-				width:25%;
-			}
+			// td:nth-child(2) {
+			// 	width:35%;
+			// }
+		}
+		td {
+			word-break: break-all;
 		}
 	}
 }
 
 .name {
-	width:5%;
+	width:14%;
 }
 .desk {
-	width: 25%;
-}
-.link, .author {
 	width: 35%;
+}
+.link {
+	width: 19%;
+}
+
+.author {
+	width: 32%;
 }
 
 .owner {
@@ -48,6 +55,7 @@ align-items: center;
     width: 68%;
 }
 
-ul {
-	padding: 0;
+pagination-controls {
+	margin-left: auto;
+	margin-right: auto;
 }
