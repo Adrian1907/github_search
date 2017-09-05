@@ -8,7 +8,7 @@
 	<button type="submit" md-raised-button color="primary" (click)="search(keyword.value)">Search repositories</button>
 </form>
 
-<img *ngIf="!results" id="octocat" src="octocat.gif" alt="">
+<img *ngIf="!results || error" id="octocat" src="octocat.gif" alt="">
 
 <section *ngIf="results">
 	<table>
@@ -50,10 +50,8 @@
 			</tr>
 		</tbody>
 	</table>
-	
-	<!-- <p [hidden]="!error">{{ error }}</p> -->
 
-	<md-progress-bar mode="indeterminate" [style.display]="(results.length || error) ? 'none' : 'block'"></md-progress-bar>
+	<md-progress-bar mode="indeterminate" [style.display]="(res_count == 0 || results.length || error) ? 'none' : 'block'"></md-progress-bar>
 
 	<section [hidden]="results.length < 5">
 		<md-toolbar>
@@ -62,3 +60,5 @@
 	</section>
 
 </section>
+
+<p [hidden]="res_count != 0">No matching results</p>

@@ -16,7 +16,7 @@ export class GithubApiService {
    		private snackbar: MdSnackBar) { }
 
 	notify(error: any) {
-		this.snackbar.open(`Error: ${ error}`, 'Ok', {
+		this.snackbar.open(`Error ${ error}`, 'Ok', {
 			duration: 5000
 		});
 	}
@@ -30,7 +30,7 @@ export class GithubApiService {
 	    		)
 	    	.catch(
 	    		(e) => {
-		    		this.notify(`${ e.status } ${ e.statusText }`);
+		    		this.notify(`${ e.status }: ${ e.statusText }`);
 			        return Observable.throw(
 			        	new Error(`${ e.status } ${ e.statusText }`)
 			        );
