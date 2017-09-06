@@ -15,12 +15,16 @@ export class AppComponent {
   error: object;
   page: number = 1;
 
-  constructor(private _githubApiService: GithubApiService) { }
-
-  search(keyword: string) {
+  resetData():void {
   	this.results = [];
   	this.error = null;
   	this.res_count = undefined;
+  }
+
+  constructor(private _githubApiService: GithubApiService) { }
+
+  search(keyword: string) {
+  	this.resetData();
 
     this._githubApiService.searchRep(keyword).subscribe(
     	(data) => this.results = data.items,
