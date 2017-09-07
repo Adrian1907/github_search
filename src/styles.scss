@@ -1,4 +1,36 @@
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
-body {text-align: center;}
-ul {padding: 0;}
+@function calcFluidSize($f-min, $f-max, $v-min, $v-max, $units: px) {
+  $k: ($f-max - $f-min)/($v-max - $v-min);
+  $b: $f-min - $k * $v-min;
+  $b: $b + $units;
+  @return calc( #{$k} * 100vw + #{$b} );
+}
+
+
+body {
+	text-align: center;
+	font-size: calcFluidSize(12, 16, 320, 1920);
+}
+
+ul {
+	padding: 0;
+}
+
+.mat-card {
+	padding: 1.5em !important;
+}
+
+.mat-card-title {
+	font-size: calcFluidSize(16, 24, 320, 1920);
+}
+
+md-toolbar.mat-toolbar {
+	font-size: calcFluidSize(15, 24, 320, 1920);
+	padding: 0;
+	.ngx-pagination .current,
+	.ngx-pagination a,
+	.ngx-pagination .disabled {
+	    padding: 0 0.5em;
+	}
+}

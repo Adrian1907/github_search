@@ -12,12 +12,12 @@ export class AppComponent {
   title = 'Enter a keyword and search a github repository';
   results: Array<Object>;
   res_count: number;
-  error: object;
+  error: any;
   page: number = 1;
 
   resetData():void {
   	this.results = [];
-  	this.error = null;
+  	this.error = undefined;
   	this.res_count = undefined;
   }
 
