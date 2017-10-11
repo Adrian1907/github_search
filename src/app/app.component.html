@@ -5,7 +5,7 @@
 	<md-form-field>
 		<input type="search" mdInput placeholder="Your request" #keyword>
 	</md-form-field>
-	<button type="submit" md-raised-button color="primary" (click)="search(keyword.value)">Search repositories</button>
+	<button [disabled]="blocked" type="submit" md-raised-button color="primary" (click)="search(keyword.value)">Search repositories</button>
 </form>
 
 <img *ngIf="!results || error" id="octocat" src="./assets/images/octocat.gif" alt="">
@@ -43,7 +43,7 @@
 									{{ result.owner.login }}
 								</a>
 							</md-card-title>
-							<img md-card-sm-image src="./assets/images/md-progress-spinner.gif" lazy-load="{{ result.owner.avatar_url }}" alt="avatar">
+							<img md-card-sm-image src="./assets/images/md-progress-spinner.svg" lazy-load="{{ result.owner.avatar_url }}" alt="avatar">
 						</md-card-title-group>
 					</md-card>
 				</td>

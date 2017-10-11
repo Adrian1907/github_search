@@ -14,6 +14,11 @@ export class AppComponent {
   res_count: number;
   error: any;
   page: number = 1;
+  blocked: boolean = false;
+
+  enableButton():void {
+    this.blocked = false;
+  }
 
   resetData():void {
   	this.results = [];
@@ -25,11 +30,21 @@ export class AppComponent {
 
   search(keyword: string) {
   	this.resetData();
+    this.blocked = true;
 
     this._githubApiService.searchRep(keyword).subscribe(
-    	(data) => this.results = data.items,
-    	(err) => this.error = err,
-    	() => this.res_count = this.results.length
+    	(data) => {
+        this.results = data.items;
+        this.enableButton();
+      },
+    	(err) => {
+        this.error = err;
+        this.enableButton();
+      },
+    	() => {
+        this.res_count = this.results.length;
+        this.enableButton();
+      }
     );
   }
 }

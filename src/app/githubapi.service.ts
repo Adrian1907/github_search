@@ -3,11 +3,7 @@ import { Http } from '@angular/http';
 import { MdSnackBar } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
-import 'rxjs/add/observable/throw';
-// import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-// import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class GithubApiService {
